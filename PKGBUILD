@@ -9,8 +9,8 @@
 
 pkgname=pacman
 pkgver=6.0.2
-_pkgver=1.9.0
-pkgrel=11
+_pkgver=1.9.1
+pkgrel=12
 pkgdesc="A library-based package manager with dependency support"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -28,9 +28,8 @@ optdepends=('perl-locale-gettext: translation support in makepkg-template'
             'sudo: privilege elevation for several scripts'
             'vim: default merge program for pacdiff'
             'haveged: for pacman-init.service')
-provides=('pacman-contrib' 'pacman-init' 'libalpm.so')
-conflicts=('pacman-contrib' 'pacman-init')
-replaces=('pacman-contrib' 'pacman-init')
+provides=('libalpm.so' 'pacman-contrib')
+conflicts=('pacman-contrib')
 backup=(etc/pacman.conf
         etc/makepkg.conf)
 install=pacman.install
