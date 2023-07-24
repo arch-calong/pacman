@@ -10,7 +10,7 @@
 pkgname=pacman
 pkgver=6.0.2
 _pkgver=1.9.1
-pkgrel=12
+pkgrel=13
 pkgdesc="A library-based package manager with dependency support"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -45,9 +45,7 @@ source=(https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz{,.sig
         pacman-strip-include-o-files-similar-to-kernel-modules.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/de11824527ec4e2561e161ac40a5714ec943543c.patch
         pacman.conf
         makepkg.conf
-        pacman-sync-first-option.patch
-        etc-pacman.d-gnupg.mount
-        pacman-init.service)
+        pacman-sync-first-option.patch)
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             'SKIP'
             'SKIP'
@@ -57,9 +55,7 @@ sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             'acd0b149b6324dc1eca3cd2d3b30df6ef64c5653e83523d77200ec593e01d2a7'
             'fd5633e107d4082d0ce96f8afe5db08819a24d5b243413ba790ecfb864e36cd4'
             '40c8c0f874a3ce1e2290be95f79b772e1e3661b7e99608e1742349eb192c0f5a'
-            '8167155d3a3e15fc4a1b1e989fdb826779e7b3690a52e2ca9d307ae0b1550e1d'
-            'b6d14727ec465bb66d0a0358163b1bbfafcb4eaed55a0f57c30aabafae7eed68'
-            '65d8bdccdcccb64ae05160b5d1e7f3e45e1887baf89dda36c1bd44c62442f91b')
+            '8167155d3a3e15fc4a1b1e989fdb826779e7b3690a52e2ca9d307ae0b1550e1d')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -116,11 +112,6 @@ package() {
   install -dm755 "$pkgdir/etc"
   install -m644 "$srcdir/pacman.conf" "$pkgdir/etc"
   install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
-
-  # install pacman-init
-  install -dm755 $pkgdir/usr/lib/systemd/system/
-  install -m644 $srcdir/etc-pacman.d-gnupg.mount $pkgdir/usr/lib/systemd/system/etc-pacman.d-gnupg.mount
-  install -m644 $srcdir/pacman-init.service $pkgdir/usr/lib/systemd/system/pacman-init.service
 
   cd $srcdir/pacman-contrib
 
