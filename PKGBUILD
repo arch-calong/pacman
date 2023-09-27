@@ -10,7 +10,7 @@
 pkgname=pacman
 pkgver=6.0.2
 _pkgver=1.9.1
-pkgrel=13
+pkgrel=14
 pkgdesc="A library-based package manager with dependency support"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -43,6 +43,8 @@ source=(https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz{,.sig
         pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
         pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch
         pacman-strip-include-o-files-similar-to-kernel-modules.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/de11824527ec4e2561e161ac40a5714ec943543c.patch
+        pacman-fix-compatibility-with-bash-5.2-patsub_replacement.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/0e938f188692c710be36f9dd9ea7b94381aed1b4.patch
+        pacman-fix-order-of-fakechroot-fakeroot-nesting.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/05f283b5ad8f5b8f995076e93a27c8772076f872.patch
         pacman.conf
         makepkg.conf
         pacman-sync-first-option.patch)
@@ -53,8 +55,10 @@ sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             'dab7c70fb9d77d702069bb57f5a12496b463d68ae20460fb0a3ffcb4791321a9'
             '0b56c61eac3d9425d68faa2eccbaefdc5ed422b643974ae829eaca0460043da1'
             'acd0b149b6324dc1eca3cd2d3b30df6ef64c5653e83523d77200ec593e01d2a7'
+            '8641d514ef4cae9e4d1867aadf4b9c850a9e8dc9792c6c559f9d2a0e1713a5a1'
+            'b11f62d4bd9557e9d3e7456bc95f63e9eabab5ecee1368f4a14a84bc94b1c8d1'
             'fd5633e107d4082d0ce96f8afe5db08819a24d5b243413ba790ecfb864e36cd4'
-            '40c8c0f874a3ce1e2290be95f79b772e1e3661b7e99608e1742349eb192c0f5a'
+            'ff4ad4e297ffe67d2cc8b18abaee4330a3734f7271efe22af9bc980a97f41b93'
             '8167155d3a3e15fc4a1b1e989fdb826779e7b3690a52e2ca9d307ae0b1550e1d')
 
 prepare() {
