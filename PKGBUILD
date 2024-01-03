@@ -9,8 +9,8 @@
 
 pkgname=pacman
 pkgver=6.0.2
-_pkgver=1.9.1
-pkgrel=14
+_pkgver=1.10.0
+pkgrel=15
 pkgdesc="A library-based package manager with dependency support"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
