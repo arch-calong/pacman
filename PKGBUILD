@@ -7,7 +7,7 @@
 
 pkgname=pacman
 pkgver=6.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library-based package manager with dependency support"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -31,6 +31,7 @@ source=(https://gitlab.archlinux.org/pacman/pacman/-/releases/v$pkgver/downloads
         "$pkgname-repo-add-parseopts.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/0571ee82bff0edbd5ffac2228d4e6ac510b9008e.patch"
         "$pkgname-drop-result-warn.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/111eed0251238a9d3f90e76d62f2ac01aeccce48.patch"
         "$pkgname-fix-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/bae9594ac1806ce30f2af1de27c49bb101a00d44.patch"
+        fetch-signature-and-database-from-same-URL.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/eb5bf6913835e7553433ef82bdf0a456528f9b50.patch
         pacman.conf
         makepkg.conf
         pacman-sync-first-option.patch)
@@ -43,6 +44,7 @@ sha256sums=('5a60ac6e6bf995ba6140c7d038c34448df1f3daa4ae7141d2cad88eeb5f1f9d9'
             '2bbfe40539513ff5775aaf900644c8985ef618f5df9af856b9d571e2501365b0'
             '160515b741aadc876a67f213029f5f62a51ff072ea4aaeb687bbe614035bf72f'
             '1f4e4cc54332e60c9da2bdabf9a80dc11db466535f1a0be298cbf654f0723721'
+            '353069264dda744736ac57ef2bb1f7c6617a922252ca8e6be26b08a929cb3410'
             '69dbd2197423fe8be9ec74cb9fa58a819996abc5d19b4569fe84fc9c076397b7'
             '1af9e9bd27d326ccd334f12d601b532b6fab902c1c46a4932b9c44e8c8b60711'
             '8167155d3a3e15fc4a1b1e989fdb826779e7b3690a52e2ca9d307ae0b1550e1d')
