@@ -1,0 +1,8 @@
+post_upgrade() {
+  if (( $(vercmp $2 6.1.0-6) < 0 )); then
+    echo "Removing depreciated SyncFirst line from pacman.conf file ..."
+    sed -i -e '/# If upgrades are available for these packages they will be asked for first/d' /etc/pacman.conf
+    sed -i -e '/SyncFirst/d' /etc/pacman.conf
+  fi
+}
+
