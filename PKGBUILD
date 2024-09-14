@@ -7,7 +7,7 @@
 
 pkgname=pacman
 pkgver=7.0.0.r3.g7736133
-pkgrel=1
+pkgrel=2
 # use annotated tag and patch level commit from release branch (can be empty for no patches)
 _git_tag=7.0.0
 _git_patch_level_commit=77361331ae3864c6ea880e715c5864d59336f275
@@ -51,15 +51,13 @@ validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@a
               'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
 source=("git+https://gitlab.archlinux.org/pacman/pacman.git#tag=v${_git_tag}?signed"
         revertme-makepkg-remove-libdepends-and-libprovides.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/354a300cd26bb1c7e6551473596be5ecced921de.patch
-        pacman-sync-first-option.patch
         pacman.conf
         makepkg.conf
         alpm.sysusers
         rust.conf)
 sha256sums=('06d082c3ce6f0811ca728515aa82d69d372800bd3ada99f5c445ef9429b6e3a6'
             'b3bce9d662e189e8e49013b818f255d08494a57e13fc264625f852f087d3def2'
-            '8167155d3a3e15fc4a1b1e989fdb826779e7b3690a52e2ca9d307ae0b1550e1d'
-            '995a2673b9c028d28e1ce51ff2e601dfb63eab26b98ab7aee4c0995430e8bedb'
+            '59e2dc8a4a7191a256f61c22ec603bf08b738ff899b622d50e8d2d6424effd2b'
             '62f6bca8ff27bb5d3392d4722b943bf1a2f8d5859faee4a2705f1b0883d7bb36'
             '41dc4d2d936e95c1a057dd999d51ee0823e8698a6d01cf6cc526885d992bd184'
             '851385788fcef9eba37c7b9403d0010ccc94800b3279bc60ab5fcabc6ee8d321')

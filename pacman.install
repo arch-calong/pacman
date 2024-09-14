@@ -1,6 +1,7 @@
 post_upgrade() {
-  if (( $(vercmp $2 6.1.0-8) < 0 )); then
-    echo "Adding SyncFirst line to pacman.conf file ..."
-    sed -i -e 's/\[options\]/\[options\]\n# If upgrades are available for these packages they will be asked for first\nSyncFirst    = manjaro-system archlinux-keyring manjaro-keyring/' /etc/pacman.conf
-  fi
+  if (( $(vercmp $2 7.0.0.r3.g7736133-1) < 0 )); then
+    echo "Removing depreciated SyncFirst line from pacman.conf file ..."
+    sed -i -e '/# If upgrades are available for these packages they will be asked for first/d' /etc/pacman.conf
+    sed -i -e '/SyncFirst/d' /etc/pacman.conf
+
 }
