@@ -31,7 +31,10 @@ jobs:
         run: |
           sed -i "s/MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j8\"/g" /etc/makepkg.conf
           su - builder -c "git clone https://github.com/${{ github.repository }}.git -b  ${GITHUB_REF##*/} src"
-          cd src && pwd && ls
+      - name: input public gpg key
+        shell: bash
+        run: |
+          su - builder -c "gpg --recv-key F99FFE0FEAE999BD"
       - name: Build pacman
         shell: bash
         working-directory: ${{ env.workdir }}/src
