@@ -24,7 +24,7 @@ jobs:
         shell: bash
         working-directory: ${{ env.workdir }}
         run: |
-          sudo pacman -Sy base-devel bash coreutils curl gawk gettext glibc gnupg gpgme grep libarchive pacman-mirrorlist systemd asciidoc doxygen git meson  --noconfirm
+          sudo pacman -Sy base-devel bash coreutils curl gawk gettext glibc gnupg gpgme grep libarchive pacman-mirrorlist systemd asciidoc doxygen git meson fakechroot --noconfirm
       - name: Clone repos
         shell: bash
         working-directory: ${{ env.workdir }}
