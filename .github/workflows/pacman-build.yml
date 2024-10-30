@@ -35,7 +35,20 @@ jobs:
         shell: bash
         run: |
           su - builder -c "gpg --recv-key F99FFE0FEAE999BD"
-      - name: Build pacman
+      - name: Sign
+        shell: bash
+        working-directory: ${{ env.workdir }}
+        run: |
+          if [ -z "${{ secrets.CALONG_GPG_PRI }}" ] || [ -z "${{ secrets.CALONG_GPG_PASSWD }}" ]; then
+              echo "## gpg credentials not provided. Skip signing."
+          else
+              cat <(echo -e "${{ secrets.CALONG_GPG_PRI }}" | base64 --decode) | gpg --batch --import &>/dev/null
+              for p in $(find $PWD -maxdepth 1 -regex '.*\.pkg\.tar\.\(xz\|zst\)'); do
+                echo "## signing $p"
+                gpg --pinentry-mode loopback --passphrase "${{ secrets.CALONG_GPG_PASSWD }}" --detach-sign ${p}
+              done
+          fi
+      - name: Build
         shell: bash
         working-directory: ${{ env.workdir }}/src
         run: |
@@ -44,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: ${{ env.workdir }}/src/*.pkg.tar.zst
+          path: ${{ env.workdir }}/src/*.pkg.tar.*
